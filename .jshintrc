@@ -21,6 +21,7 @@
     "smarttabs": true,
     "globals": {
         "angular": false,
+        "$location": false,
         "Firebase": false,
         "app": false
     }

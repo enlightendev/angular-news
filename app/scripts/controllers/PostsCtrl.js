@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PostsCtrl', function ($scope, Post) {
+app.controller('PostsCtrl', function ($scope, $location, Post) {
 
     $scope.posts = Post.all;
 
@@ -13,8 +13,17 @@ app.controller('PostsCtrl', function ($scope, Post) {
 
 
     $scope.submitPost = function () {
-        Post.create($scope.post).then(function () {
+
+        /**
+         * call angular to create a post.
+         */
+        Post.create($scope.post).then(function (ref) {
             $scope.post = {url: 'http://', 'title': ''};
+
+            /**
+             * redirect to post page after submitting post.
+             */
+            $location.path('/posts/' + ref.name());
         });
     };
 
