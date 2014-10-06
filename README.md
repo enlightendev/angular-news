@@ -63,4 +63,11 @@ we the use this signed in method in a view as follows:
         </li>
     </ul>
     
+## $q and promises
+
+Firebase uses promises to return data. 
+See http://docs.angularjs.org/api/ng/service/$q
+    http://chariotsolutions.com/blog/post/angularjs-corner-using-promises-q-handle-asynchronous-calls/
+    https://egghead.io/lessons/angularjs-q-all
+
 

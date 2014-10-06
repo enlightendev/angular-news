@@ -23,6 +23,8 @@ app.controller('AuthCtrl', function($scope, $location, AuthService){
     $scope.login = function () {
         AuthService.login($scope.user).then(function () {
             $location.path('/');
+        }, function (error){
+            $scope.error = error.toString();
         });
     };
 
@@ -38,12 +40,16 @@ app.controller('AuthCtrl', function($scope, $location, AuthService){
 
             console.log(authUser);
 
-            /**
-             * log user in.
-             */
+            /** log user in. */
             AuthService.login($scope.user).then(function(){
                 $location.path('/');
+            }, function(error){ //error redirecting a login attempt
+                $scope.error = error.toString();
             });
+
+
+        },function(error){ //error registering a new account
+            $scope.error = error.toString();
         });
     };
 
