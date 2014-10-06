@@ -13,6 +13,19 @@ app.controller('AuthCtrl', function($scope, $location, AuthService){
         $location.path('/');
     }
 
+    $scope.$on('$firebaseSimpleLogin:login', function () {
+        $location.path('/');
+    });
+
+    /**
+     * method wraps AuthService.login. Upon successfull login will redirect user to '/'
+     */
+    $scope.login = function () {
+        AuthService.login($scope.user).then(function () {
+            $location.path('/');
+        });
+    };
+
     /**
      * provide a register method
      */
