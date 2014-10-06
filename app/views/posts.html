@@ -1,15 +1,28 @@
-<!--
-We need to use just a plain ng-repeat for post in posts since the firebase service is returning an array, and we'll
-be passing our post object to our delete function
--->
-<div ng-repeat="post in posts">
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    [ <a ng-click="deletePost(post)">Delete</a>, <a href="#/posts/{{ post.$id }}">comments</a> ] <!-- NOTE: the use of $id -->
-</div>
+<div class="container posts-page">
 
-<form ng-submit="submitPost()">
-    <input type="text" ng-model="post.title"/>
-    <input type="text" ng-model="post.url"/>
-    <input type="submit" value="Add Post"/>
-</form>
-Post: {{ post }}
+    <div class="post row" ng-repeat="post in posts">
+        <div class="col-xs-1">
+
+        </div>
+        <div class="col-md-9 col-xs-11">
+
+            <div class="info">
+                <a href="{{ post.url }}">
+                    {{ post.title }}
+                    <span class="url">({{ post.url | hostNameFromUrl}})</span>
+                </a>
+            </div>
+            <div>
+                <span>{{ post.score || 0 }} votes</span>
+                &mdash;
+                <span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span>
+                &mdash;
+                <a href="#/posts/{{ post.$id }}">comments</a>
+                <a ng-click="deletePost(post)">delete</a>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+
+    </div>
+</div>

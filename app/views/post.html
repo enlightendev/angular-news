@@ -1,5 +1,8 @@
-<div>
-    Click here -> <a href="{{post.url}}">{{post.title}}</a>
+<div class="info">
+    <a href="{{ post.url }}">
+        {{ post.title }}
+        <span class="url">({{ post.url | hostNameFromUrl }})</span>
+    </a>
 </div>
 
 <a href="#/posts">Back to posts</a>
