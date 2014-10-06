@@ -44,3 +44,23 @@ https://docs.angularjs.org/api/ng/service/$location
         .
         .
         
+
+## $rootScope
+
+$rootScope is the scope that all scopes inherit from, so this function will be available everywhere in our templates.
+notice in AUthService we use the $rootScope to create a signeIn method that can be used in many places to make sure user is 
+signed in
+
+    $rootScope.signedIn = function () {
+        return Auth.signedIn();
+    };
+    
+we the use this signed in method in a view as follows:
+
+    <ul class="nav navbar-nav navbar-right" ng-show="signedIn()">
+        <li>
+            <a href="#" ng-click="logout()">Logout</a>
+        </li>
+    </ul>
+    
+

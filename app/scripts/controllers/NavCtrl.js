@@ -5,7 +5,7 @@
  * $location: used to navigate
  * Post: post service wraps angular firebase api;s
  */
-app.controller('NavCtrl', function($scope, $location, Post){
+app.controller('NavCtrl', function($scope, $location, Post, AuthService){
 
     $scope.post = {url: 'http://', 'title': ''};
 
@@ -28,6 +28,10 @@ app.controller('NavCtrl', function($scope, $location, Post){
              */
             $location.path('/posts/' + ref.name());
         });
+    };
+
+    $scope.logout = function(){
+        AuthService.logout();
     };
 
 });
